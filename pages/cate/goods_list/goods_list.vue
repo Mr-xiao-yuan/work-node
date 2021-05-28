@@ -77,12 +77,12 @@
 						},
 						{
 							id:1,
-							value:"销量",
+							value:"销量优先",
 							isActive:false
 						},
 						{
 							id:2,
-							value:"价格",
+							value:"价格优先",
 							isActive:false
 						}
 				    ],

@@ -7,7 +7,13 @@ var express = require('express')
 var router = express.Router()
 //轮播图
 router.get('/home/swiperdata', function(req,res){
-	homes.swiper.find(function(err,data){
+	// homes.swiper.find(function(err,data){
+	// 	if(err){
+	// 		return res.status(500).send('Server error')
+	// 	}
+	// 	return res.send(data)
+	// })
+	homes.swiper.find().exec(function(err,data){
 		if(err){
 			return res.status(500).send('Server error')
 		}
@@ -16,7 +22,7 @@ router.get('/home/swiperdata', function(req,res){
 })
 //导航栏
 router.get('/home/catitems', function(req,res){
-	homes.catitem.find(function(err,data){
+	homes.catitem.find().exec(function(err,data){
 		if(err){
 			return res.status(500).send('Server error')
 		}
@@ -25,7 +31,7 @@ router.get('/home/catitems', function(req,res){
 })
 //楼梯
 router.get('/home/floordata', function(req,res){
-	homes.floor.find(function(err,data){
+	homes.floor.find().exec(function(err,data){
 		if(err){
 			return res.status(500).send('Server error')
 		}

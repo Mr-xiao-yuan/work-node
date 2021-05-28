@@ -88,7 +88,7 @@
 	.cate{
 	    .cates_list{
 	        // less中这样写~‘’才会原样输出
-	        height: ~'calc(100vh - 90rpx)';
+	        height: ~'calc(100vh - 270rpx)';
 	        display: flex;
 	        .left_menu{
 	            flex: 2;

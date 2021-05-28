@@ -9,7 +9,9 @@ var db = mongoose.createConnection('mongodb://localhost/goods',{useNewUrlParser:
 var crudSchema = new Schema({})
 
 module.exports = {
-	search: db.model('search', crudSchema)
+	search: db.model('search', crudSchema),
+	detail: db.model('detail', crudSchema),
+	cart: db.model('cart', crudSchema)
 }
 
  

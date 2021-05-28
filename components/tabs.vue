@@ -22,15 +22,6 @@
 		},
 		methods: {
 			handItem(e){
-				// this.tabsc = this.$parent.$parent.tabs
-				// console.log(this.tabsc)
-				// for(var i=0;i<this.tabsc.length;i++){
-				// 	if(this.tabsc.id == e){
-				// 		this.tabsc[i].isActive = true
-				// 	}
-				// }
-				// this.num = e
-				// this.$parent.$parent.handtabsitem(e)
 				this.$emit("bindItem",e)
 			}
 		},

@@ -9,7 +9,7 @@ var cors = require('cors')
 //引用express
 var app = express()
 //配置express的模板引擎
-app.engine('html',require('express-art-template'))
+app.engine('json',require('express-art-template'))
 //配置中间件body-parser
 app.use(bodyParser.urlencoded({extended:false}))app.use(bodyParser.json())
 app.use(cors())

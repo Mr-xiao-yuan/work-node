@@ -1,10 +1,10 @@
 const BASE_URL = 'http://127.0.0.1:3000'
-export const myrequest = (query,mode) =>{
+export const myrequest = (query,mode,param) =>{
 	return new Promise((resolve, reject) =>{
 		uni.request({
 			url: BASE_URL+query,
 			method: mode || 'GET',
-			// data: ""
+			data: param,
 			success:(res)=>{
 				if(res.statusCode !== 200){
 					return uni.showToast({

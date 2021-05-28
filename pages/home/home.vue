@@ -10,7 +10,7 @@
 		</swiper>
 		<!-- 导航菜单 -->
 		<view class="index_cate">
-		    <navigator v-for="item in list" :key="list.name">
+		   <navigator v-for="(item,index) in list" open-type="switchTab" :url="src1" @click="xie(index)" :key="list.name">
 		      <image :src="item.image_src" mode="widthFix"></image>
 		    </navigator>
 		</view>
@@ -39,13 +39,28 @@
 			return {
 				swiper: [],
 				list: [],
-				floor: []
+				floor: [],
+				src1: ''
 			}
 		},
 		components:{
 			search
 		},
 		methods: {
+			xie(index){
+				if(index===0){
+					this.src1 = '/pages/cate/cate'
+				}else if(index===1){
+					// this.src1 = ''
+					this.src1 = '/pages/shopping/shopping'
+				}else if(index===2){
+					// this.src1 = ''
+					this.src1 = '/pages/goods_list/goods_list'
+				}else if(index===3){
+					// this.src1 = ''
+					this.src1 = '/pages/my/my'
+				}
+			},
 			getSwiper(){//获取轮播图数据
 				this.request("/home/swiperdata","GET").then(res=>{
 					console.log(res)
