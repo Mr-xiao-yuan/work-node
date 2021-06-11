@@ -6,7 +6,7 @@
 			<li @click="xie"><i :class="index===0?collection:collection1"></i><p :style="index===0?'':'color: #FF5000'">{{index===0?'收藏':'已收藏'}}</p></li> 
 		</ul>
 		<ul class="add_right">
-			<li class="cart">加入购物车</li>
+			<li class="cart" @click="addCart">加入购物车</li>
 			<li class="buy">立即购买</li>
 		</ul>
 	</view>
@@ -21,9 +21,20 @@
 				index: 0
 			}
 		},
+		props:{
+			cartdata: Object
+		},
 		methods:{
 			xie(){
 				this.index = this.index===0?1:0
+			},
+			addCart(){
+				this.request("/goods/cart","POST",this.cartdata).then(res=>{
+					console.log(res)
+				})
+				return uni.showToast({
+					title:"已加入购物车"
+				})
 			}
 		}
 	}

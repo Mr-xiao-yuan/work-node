@@ -1,46 +1,48 @@
 <template>
-	<view class="shopping">
-		<view class="shopping_title">
-			<p class="title_left">共1件宝贝</p>
-			<p class="title_right" @click="edit">管理</p>
-		</view>
-		<view class="group">
-			<view class="group_title">
-				<view class="title_shop">
-					<ul>
-						<li class="shop1" @click="shopAllSelect"><i :class="indexs1===1?select:unchecked"></i></li>
-						<li class="shop2"><image src="//gtms04.alicdn.com/tps/i4/TB1x4ExHVXXXXalXFXXSutbFXXX.jpg" mode=""></image></li>
-						<li class="shop3">永恒家具大卖场</li>
-						<li class="shop4"><image src="../../static/tab/you.png" mode=""></image></li>
-					</ul>
-				</view>
-				<view class="title_coupons">领券</view>
+	<view  class="shopping">
+		<view>
+			<view class="shopping_title">
+				<p class="title_left">共1件宝贝</p>
+				<p class="title_right" @click="edit">管理</p>
 			</view>
-			<view class="group_body">
-				<view class="body_left" @click="Select"><i :class="indexs===1?select:unchecked"></i></view>
-				<view class="body_center"><image src="https://img.alicdn.com/imgextra/i4/2215975287/O1CN01SYC6Hy1ovUakSWMeL_!!2215975287.jpg_640x640q80_.webp" mode=""></image></view>
-				<view class="body_right">
-					<view class="right_title">超市收银台柜台桌便利店铺转角商用奶茶水果美容小型简约现代吧台</view>
-					<view class="right_content">100x80x80cm;特价款（无柜无键盘托无抽屉）[左右转角随意安装]</view>
-					<view class="right_pice">
-						<p>￥290</p>
-						<view class="right_number">
-							<view class="number_left">-</view>
-							<view class="number_center">1</view>
-							<view class="number_right">+</view>
+			<view class="group" v-for="(item,index) in cartlist">
+				<view class="group_title">
+					<view class="title_shop">
+						<ul>
+							<i  class="shop1" @click="Select(index)" :class="item.checked === 1?select:unchecked"></i>
+							<li class="shop2"><image :src="item.shop_type" mode=""></image></li>
+							<li class="shop3">{{item.shop_name}}</li>
+							<li class="shop4"><image src="../../static/tab/you.png" mode=""></image></li>
+						</ul>
+					</view>
+					<view class="title_coupons">领券</view>
+				</view>
+				<view class="group_body">
+					<i  class="body_left" @click="Select(index)" :class="item.checked ===1?select:unchecked"></i>
+					<view class="body_center"><image :src="item.goods_big_logo" mode=""></image></view>
+					<view class="body_right">
+						<view class="right_title">{{item.goods_name}}</view>
+						<view class="right_content">100x80x80cm;特价款（无柜无键盘托无抽屉）[左右转角随意安装]</view>
+						<view class="right_pice">
+							<p>{{item.goods_price}}</p>
+							<view class="right_number">
+								<view class="number_left" @click="jian">-</view>
+								<view class="number_center">{{amount}}</view>
+								<view class="number_right" @click="zhen">+</view>
+							</view>
 						</view>
 					</view>
 				</view>
 			</view>
 		</view>
 		<view class="check">
-			<view class="check_left" @click="allSelect"><i :class="indexs2===1?select:unchecked"></i><p>全选</p></view>
+			<view class="check_left" @click="allSelect"><i :class="num===1?select:unchecked"></i><p>全选</p></view>
 			<view v-if="active" class="check_right">
 				<button>结算(0)</button>
 				<p>合计：<text>￥0</text></p> 
 			</view>
 			<view v-if="!active" class="check_del">
-				<p>删除</p>
+				<p @click="del">删除</p>
 			</view>
 		</view>
 	</view>
@@ -52,27 +54,52 @@
 		data() {
 			return {
 				active: true,
-				indexs: 0,
-				indexs1: 0,
-				indexs2: 0,
 				unchecked: 'iconfont icon-weixuanzhong',
-				select: 'iconfont icon-yixuanzhong'
+				select: 'iconfont icon-yixuanzhong',
+				cartlist:[],
+				amount: 1,
+				num: 0
 			}
 		},
-		
 		methods: {
+			cartdata(){
+				this.request("/goods/cart","GET").then(res=>{
+					console.log(res)
+					this.cartlist = res.data
+				})
+			},
 			edit(){//管理
 				this.active = this.active === false?true:false
 			},
-			Select(){//单个选中
-				this.indexs = this.indexs === 1?0:1
-			},
-			shopAllSelect(){//店铺全选
-				this.indexs1 = this.indexs1 === 1?0:1
+			Select(i){//单个选中
+				// console.log(i)
+				this.cartlist[i].checked = this.cartlist[i].checked === 0?1:0
 			},
 			allSelect(){//全部全选
-				this.indexs2 = this.indexs2 === 1?0:1
+				this.num = this.num === 0?1:0
+				for(let i in this.cartlist){
+					this.cartlist[i].checked = this.cartlist[i].checked===0?1:0
+				}
+			},
+			jian(){
+				if(this.amount <= 1){
+					this.amount === 1
+				}else{
+					this.amount--
+				}
+			},
+			zhen(){
+				this.amount++
+			},
+			del(){
+				this.request("/goods/delete","GET").then(res=>{
+					// console.log(res)
+					// this.cartlist = res.data
+				})
 			}
+		},
+		onLoad() {
+			this.cartdata()
 		}
 	}
 </script>
@@ -80,139 +107,145 @@
 <style lang="less">
 	page{
 		background-color: #F2F2F2;
+		height: 100%;
 	}
-	.shopping_title{
-		background-color: #FF5000;
-		width: 100%;
-		height: 80rpx;
-		color: #FFFFFF;
-		padding-top: 20rpx;
-		font-weight: bold;
-		.title_left{
-			width: 160rpx;
-			float: left;
-			text-align: center;
-		}
-		.title_right{
-			width: 80rpx;
-			float: right;
-		}
-	}
-	.group{
-		background-color: #FFFFFF;
-		width: 95%;
-		border-radius: 30rpx;
-		margin: 20rpx 20rpx;
-		// padding: 20rpx;
-		.group_title{
-			display: flex;
-			.title_shop{
-				flex: 7.6;
-				ul{
-					padding: 0;
-					width: 50%;
-					list-style: none;
-					display: flex;
-					align-items: center;
-					text-align: center;
-					.shop1{
-						flex: 1.2;
-						width: 90rpx;
-					}
-					.shop2{
-						flex: 0.3;
-						image{
-							width: 36rpx;
-							height: 36rpx;
-							margin-top: 12rpx;
-						}
-					}
-					.shop3{
-						flex: 2.4;
-						font-size: 24rpx;
-						text-align: center;
-					}
-					.shop4{
-						flex: 0.3;
-						image{
-							width: 24rpx;
-							height: 24rpx;
-							margin-top: 10rpx;
-							color: #2C405A;
-						}
-					}
-				}
+	.shopping{
+		.shopping_title{
+			background-color: #FF5000;
+			width: 100%;
+			height: 80rpx;
+			color: #FFFFFF;
+			padding-top: 20rpx;
+			font-weight: bold;
+			.title_left{
+				width: 160rpx;
+				float: left;
+				text-align: center;
 			}
-			.title_coupons{
-				flex: 1;
-				margin-top: 12rpx;
-				color: #999999;
+			.title_right{
+				width: 80rpx;
+				float: right;
 			}
 		}
-		.group_body{
-			margin-top: 20rpx;
-			width: 98%;
-			// height: 180rpx;
-			display: flex;
-			align-items: center;
-			text-align: center;
-			.body_left{
-				flex: 1;
-			}
-			.body_center{
-				flex: 2;
-				image{
-					width: 180rpx;
-					height: 180rpx;
-					border-radius: 15rpx;
-				}
-			}
-			.body_right{
-				flex: 5;
+		.group{
+			background-color: #FFFFFF;
+			width: 95%;
+			border-radius: 30rpx;
+			margin: 20rpx 20rpx;
+			// padding: 20rpx;
+			.group_title{
 				display: flex;
-				flex-direction: column;
-				height: 100%;
-				margin-left: 20rpx;
-				.right_title{
-					flex: 1;
-					overflow: hidden;
-					text-overflow: ellipsis;
-					font-size: 28rpx;
-				}
-				.right_content{
-					flex: 1;
-					font-size: 26rpx;
-					margin-top: 10rpx;
-					text-align: left;
-					border-radius: 15rpx;
-					background-color: #f5f5f5;
-					color: #c0c0c0;
-					padding: 8rpx;
-				}
-				.right_pice{
-					display: flex;
-					margin-top: 10rpx;
-					height: 50rpx;
-					padding: 6rpx;
-					p{
-						flex: 1.5;
-						text-align: left;
-						color: #FF0036;
-						
-					}
-					.right_number{
-						flex: 1;
+				.title_shop{
+					flex: 7.6;
+					ul{
+						padding: 0;
+						width: 50%;
+						list-style: none;
 						display: flex;
-						border: 1rpx solid #C0C0C0;
-						border-radius: 10rpx;
-						.number_left,.number_right{
-							flex: 0.8;
+						align-items: center;
+						text-align: center;
+						.shop1{
+							flex: 1.2;
+							width: 90rpx;
+						}
+						.shop2{
+							flex: 0.3;
+							image{
+								width: 36rpx;
+								height: 36rpx;
+								margin-top: 12rpx;
+							}
+						}
+						.shop3{
+							flex: 2.4;
+							font-size: 24rpx;
+							text-align: center;
+						}
+						.shop4{
+							flex: 0.3;
+							image{
+								width: 24rpx;
+								height: 24rpx;
+								margin-top: 10rpx;
+								color: #2C405A;
+							}
+						}
+					}
+				}
+				.title_coupons{
+					flex: 1;
+					margin-top: 12rpx;
+					color: #999999;
+				}
+			}
+			.group_body{
+				margin-top: 20rpx;
+				width: 98%;
+				// height: 180rpx;
+				display: flex;
+				align-items: center;
+				text-align: center;
+				.body_left{
+					flex: 1;
+				}
+				.body_center{
+					flex: 2;
+					image{
+						width: 180rpx;
+						height: 180rpx;
+						border-radius: 15rpx;
+					}
+				}
+				.body_right{
+					flex: 5;
+					display: flex;
+					flex-direction: column;
+					height: 100%;
+					margin-left: 20rpx;
+					.right_title{
+						flex: 1;
+						display: -webkit-box;
+						-webkit-line-clamp:2;//这边的2指的是两行
+						-webkit-box-orient: vertical;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						font-size: 28rpx;
+					}
+					.right_content{
+						flex: 1;
+						font-size: 26rpx;
+						margin-top: 10rpx;
+						text-align: left;
+						border-radius: 15rpx;
+						background-color: #f5f5f5;
+						color: #c0c0c0;
+						padding: 8rpx;
+					}
+					.right_pice{
+						display: flex;
+						margin-top: 10rpx;
+						height: 50rpx;
+						padding: 6rpx;
+						p{
+							flex: 1.5;
+							text-align: left;
+							color: #FF0036;
 							
 						}
-						.number_center{
+						.right_number{
 							flex: 1;
-							border-left: 1rpx solid #C0C0C0;
-							border-right: 1rpx solid #C0C0C0;
+							display: flex;
+							border: 1rpx solid #C0C0C0;
+							border-radius: 10rpx;
+							.number_left,.number_right{
+								flex: 0.8;
+								
+							}
+							.number_center{
+								flex: 1;
+								border-left: 1rpx solid #C0C0C0;
+								border-right: 1rpx solid #C0C0C0;
+							}
 						}
 					}
 				}

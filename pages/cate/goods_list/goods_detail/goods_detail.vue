@@ -120,7 +120,7 @@
 				<image src="//img.alicdn.com/tfs/TB1k9XsQpXXXXXLXpXXXXXXXXXX-750-368.png_2200x2200Q90s50.jpg_.webp" mode="widthFix"></image>
 			</view>
 		</view>
-		<add-shopping></add-shopping>
+		<add-shopping :cartdata="datalist"></add-shopping>
 	</view>
 </template>
 

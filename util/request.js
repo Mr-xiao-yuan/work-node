@@ -3,7 +3,7 @@ export const myrequest = (query,mode,param) =>{
 	return new Promise((resolve, reject) =>{
 		uni.request({
 			url: BASE_URL+query,
-			method: mode || 'GET',
+			method: mode || 'GET' || 'POST',
 			data: param,
 			success:(res)=>{
 				if(res.statusCode !== 200){
