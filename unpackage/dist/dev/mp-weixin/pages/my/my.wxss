@@ -1,0 +1,157 @@
+#my .user {
+  width: 100%;
+  height: 300rpx;
+  background-color: var(--themeColor);
+  padding: 32rpx;
+  color: white;
+}
+#my .user image {
+  width: 120rpx;
+  height: 120rpx;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  float: left;
+}
+#my .user .user_name {
+  width: 500rpx;
+  line-height: 50rpx;
+  float: left;
+  margin-left: 20rpx;
+}
+#my .user .user_name text {
+  font-size: 32rpx;
+}
+#my .user .user_name ._p {
+  font-size: 16rpx;
+}
+#my .allorders {
+  width: 90%;
+  height: 200rpx;
+  background-color: white;
+  position: absolute;
+  margin: 0 40rpx;
+  top: 200rpx;
+  -webkit-border-radius: 20rpx;
+          border-radius: 20rpx;
+}
+#my .allorders .allorders_title {
+  padding: 20rpx;
+}
+#my .allorders ._ul {
+  list-style: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+#my .allorders ._ul ._li {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+}
+#my .allorders ._ul ._li ._i {
+  font-size: 52rpx;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+#my .allorders ._ul ._li ._p {
+  text-align: center;
+}
+#my .often {
+  width: 90%;
+  height: 400rpx;
+  background-color: white;
+  position: absolute;
+  margin: 0 40rpx;
+  top: 450rpx;
+  -webkit-border-radius: 20rpx;
+          border-radius: 20rpx;
+  padding: 20rpx;
+}
+#my .often .often_top {
+  width: 100%;
+  margin-top: 40rpx;
+}
+#my .often .often_top ._ul {
+  list-style: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+#my .often .often_top ._ul ._li {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+}
+#my .often .often_top ._ul ._li ._i {
+  font-size: 52rpx;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+#my .often .often_top ._ul ._li ._p {
+  text-align: center;
+}
+#my .other {
+  width: 90%;
+  height: 200rpx;
+  background-color: white;
+  position: absolute;
+  margin: 0 40rpx;
+  top: 900rpx;
+  -webkit-border-radius: 20rpx;
+          border-radius: 20rpx;
+  padding: 20rpx;
+}
+#my .other ._ul {
+  list-style: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  margin-top: 20rpx;
+}
+#my .other ._ul ._li {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+}
+#my .other ._ul ._li ._i {
+  font-size: 52rpx;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+#my .other ._ul ._li ._p {
+  text-align: center;
+}
+

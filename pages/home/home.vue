@@ -1,4 +1,5 @@
 <template>
+	<!-- 首页 -->
 	<view class="home">
 		<!-- 搜索框 -->
 		<search></search>

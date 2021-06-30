@@ -1,1 +1,1 @@
-<view id="search"><view class="search_input"><navigator url="/pages/search/index" open-type="navigate">搜索</navigator></view></view>
+<view id="search"><view class="search_input"><navigator url="/pages/search/index" open-type="navigate"><input type="text" placeholder="搜索" data-event-opts="{{[['confirm',[['doSearch',['$event']]]]]}}" bindconfirm="__e"/></navigator></view></view>

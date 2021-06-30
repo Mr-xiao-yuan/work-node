@@ -7,7 +7,6 @@
             {
                 "enablePullDownRefresh": false
             }
-            
         }
         ,{
             "path" : "pages/cate/cate",
@@ -16,7 +15,6 @@
                 "navigationBarTitleText": "商品分类",
                 "enablePullDownRefresh": false
             }
-            
         }
         ,{
             "path" : "pages/shopping/shopping",
@@ -25,7 +23,6 @@
                 "navigationBarTitleText": "购物车",
                 "enablePullDownRefresh": false
             }
-            
         }
         ,{
             "path" : "pages/my/my",
@@ -34,7 +31,6 @@
                 "navigationBarTitleText": "个人中心",
                 "enablePullDownRefresh": false
             }
-            
         }
         ,{
             "path" : "pages/cate/goods_list/goods_list",
@@ -44,7 +40,6 @@
 				"enablePullDownRefresh":true,
 				"backgroundTextStyle": "dark"
             }
-            
         }
         ,{
             "path" : "pages/cate/goods_list/goods_detail/goods_detail",
@@ -53,8 +48,63 @@
                 "navigationBarTitleText": "商品详情",
                 "enablePullDownRefresh": false
             }
-            
         }
+        ,{
+            "path" : "pages/my/subpage/setup/setup",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "设置",
+                "enablePullDownRefresh": false
+            }
+        },
+		{
+		    "path" : "pages/my/subpage/setup/personal",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "个人信息",
+		        "enablePullDownRefresh": false
+		    }
+		},
+		{
+		    "path" : "pages/my/subpage/setup/security",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "账号与安全",
+		        "enablePullDownRefresh": false
+		    }
+		},
+		{
+		    "path" : "pages/my/subpage/setup/payment",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "支付管理",
+		        "enablePullDownRefresh": false
+		    }
+		},
+		{
+		    "path" : "pages/my/subpage/setup/notice",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "消息通知",
+		        "enablePullDownRefresh": false
+		    }
+		},
+		{
+		    "path" : "pages/my/subpage/setup/currency",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "通用",
+		        "enablePullDownRefresh": false
+		    }
+		},
+		{
+		    "path" : "pages/my/subpage/setup/Privacy",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "隐私管理",
+		        "enablePullDownRefresh": false
+		    }
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",//标题文本颜色
@@ -91,5 +141,8 @@
 				"selectedIconPath":"static/tab/mys.png"
 			}
 		]
-	}
+	},
+	"easycom": {
+			"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+		}
 }

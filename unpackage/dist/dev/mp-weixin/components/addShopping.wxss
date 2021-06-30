@@ -1,0 +1,61 @@
+.add {
+  bottom: 0;
+  background-color: #FFFFFF;
+  position: fixed;
+  width: 100%;
+  height: 90rpx;
+}
+.add .add_left {
+  width: 40%;
+  float: left;
+  list-style: none;
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  text-align: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.add .add_left ._li {
+  margin-top: 10rpx;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  text-align: center;
+}
+.add .add_left ._li ._p {
+  margin-top: 10rpx;
+  color: #999;
+}
+.add .add_right {
+  width: 60%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  list-style: none;
+  padding: 0;
+  float: left;
+  color: #FFFFFF;
+  height: 90rpx;
+  text-align: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.add .add_right .cart {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  background-color: #FF9500;
+  padding: 25rpx 0;
+}
+.add .add_right .buy {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  background-color: #FF0036;
+  padding: 25rpx 0;
+}
+

@@ -44,5 +44,14 @@
 .first_tab .good_item .item_right .right_price {
   color: var(--themeColor);
   font-size: 32rpx;
+  width: 150rpx;
+  float: left;
+}
+.first_tab .good_item .item_right .right_number {
+  color: #C0C0C0;
+  font-size: 24rpx;
+  width: 150rpx;
+  text-align: center;
+  float: right;
 }
 

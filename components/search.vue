@@ -1,7 +1,10 @@
 <template>
 	<view id="search">
+		<!-- <view class="search_input">
+		    <navigator url="/pages/search/index" open-type="navigate"><input type="text"  @confirm="doSearch" placeholder="搜索" /></navigator>
+		</view> -->
 		<view class="search_input">
-		    <navigator url="/pages/search/index" open-type="navigate">搜索</navigator>
+			<u-search :show-action="false" placeholder="请输入商品名称" round bg-color="white" show-action></u-search>
 		</view>
 	</view>
 </template>
@@ -11,8 +14,13 @@
 		name: 'search',
 		data() {
 			return {
-				
+				num: ''
 			};
+		},
+		methods:{
+			doSearch(i){
+				this.num = i.detail.value
+			}
 		}
 	}
 </script>
@@ -22,15 +30,6 @@
 	    height: 90rpx;
 	    padding: 10rpx;
 	    background-color: var(--themeColor);
-	    navigator{
-	        height: 100%;
-	        display: flex;
-	        justify-content: center;
-	        align-items: center;
-	        background-color: #fff;
-	        border-radius: 20rpx;
-	        color: #666;
-	    }
 	}
 
 </style>

@@ -60,6 +60,7 @@
 			</view>
 	    </block>
 	  </Tabs>
+	  <u-back-top :scroll-top="scrollTop" style="background-color: white;"></u-back-top>
 	</view> 
 </template>
 
@@ -97,12 +98,16 @@
 					// 当前总页数
 					totalPage:1,
 					//页面数据总条数
-					total:20
+					total:20,
+					scrollTop: 0
 			}
 		},
 		components:{
 			search,
 			Tabs
+		},
+		onPageScroll(e) {
+			this.scrollTop = e.scrollTop
 		},
 		methods: {
 			cateList(){//获取商品列表数据

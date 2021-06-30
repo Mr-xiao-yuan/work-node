@@ -1,5 +1,5 @@
 <template>
-	<view  class="shopping">
+	<view class="shopping">
 		<view>
 			<view class="shopping_title">
 				<p class="title_left">共1件宝贝</p>
@@ -9,7 +9,7 @@
 				<view class="group_title">
 					<view class="title_shop">
 						<ul>
-							<i  class="shop1" @click="Select(index)" :class="item.checked === 1?select:unchecked"></i>
+							<u-icon class="shop1" @click="Select(index)" size="54" custom-prefix="custom-icon" :name="item.checked === 1?select:unchecked"></u-icon>
 							<li class="shop2"><image :src="item.shop_type" mode=""></image></li>
 							<li class="shop3">{{item.shop_name}}</li>
 							<li class="shop4"><image src="../../static/tab/you.png" mode=""></image></li>
@@ -18,7 +18,7 @@
 					<view class="title_coupons">领券</view>
 				</view>
 				<view class="group_body">
-					<i  class="body_left" @click="Select(index)" :class="item.checked ===1?select:unchecked"></i>
+					<u-icon  class="body_left" @click="Select(index)" custom-prefix="custom-icon" size="54" :name="item.checked ===1?select:unchecked"></u-icon>
 					<view class="body_center"><image :src="item.goods_big_logo" mode=""></image></view>
 					<view class="body_right">
 						<view class="right_title">{{item.goods_name}}</view>
@@ -36,7 +36,7 @@
 			</view>
 		</view>
 		<view class="check">
-			<view class="check_left" @click="allSelect"><i :class="num===1?select:unchecked"></i><p>全选</p></view>
+			<view class="check_left" @click="allSelect"><u-icon custom-prefix="custom-icon" size="54" :name="num===1?select:unchecked"></u-icon><p>全选</p></view>
 			<view v-if="active" class="check_right">
 				<button>结算(0)</button>
 				<p>合计：<text>￥0</text></p> 
@@ -54,8 +54,8 @@
 		data() {
 			return {
 				active: true,
-				unchecked: 'iconfont icon-weixuanzhong',
-				select: 'iconfont icon-yixuanzhong',
+				unchecked: 'weixuanzhong',
+				select: 'yixuanzhong',
 				cartlist:[],
 				amount: 1,
 				num: 0
@@ -72,7 +72,6 @@
 				this.active = this.active === false?true:false
 			},
 			Select(i){//单个选中
-				// console.log(i)
 				this.cartlist[i].checked = this.cartlist[i].checked === 0?1:0
 			},
 			allSelect(){//全部全选
@@ -105,10 +104,6 @@
 </script>
 
 <style lang="less">
-	page{
-		background-color: #F2F2F2;
-		height: 100%;
-	}
 	.shopping{
 		.shopping_title{
 			background-color: #FF5000;
@@ -147,6 +142,9 @@
 						.shop1{
 							flex: 1.2;
 							width: 90rpx;
+							align-items: center;
+							justify-content: center;
+							display: flex;
 						}
 						.shop2{
 							flex: 0.3;
@@ -187,6 +185,9 @@
 				text-align: center;
 				.body_left{
 					flex: 1;
+					align-items: center;
+					justify-content: center;
+					display: flex;
 				}
 				.body_center{
 					flex: 2;
@@ -265,8 +266,11 @@
 		.check_left{
 			width: 20%;
 			padding: 10rpx;
-			i{
+			.u-icon{
 				float: left;
+				align-items: center;
+				justify-content: center;
+				display: flex;
 			}
 			p{
 				float: left;

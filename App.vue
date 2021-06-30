@@ -12,10 +12,11 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	@import url("static/font/font.css");
+	@import "uview-ui/index.scss";
 	/*每个页面公共css */
-	page,view,text,swiper,swiper-item,image,navigator{
+	page,view,text,swiper,swiper-item,image,navigator,ul{
 		padding: 0;
 		margin: 0;
 		box-sizing: border-box;
@@ -25,5 +26,6 @@
 	  --themeColor: #eb4450;
 	  /* 定义统一字体大小 */
 	  font-size: 28rpx;
+	  background-color: #F2F2F2;
 	}
 </style>

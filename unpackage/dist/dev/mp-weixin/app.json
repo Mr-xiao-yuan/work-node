@@ -5,7 +5,8 @@
     "pages/shopping/shopping",
     "pages/my/my",
     "pages/cate/goods_list/goods_list",
-    "pages/cate/goods_list/goods_detail/goods_detail"
+    "pages/cate/goods_list/goods_detail/goods_detail",
+    "pages/my/subpage/setup"
   ],
   "subPackages": [],
   "window": {

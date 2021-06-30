@@ -1,0 +1,1 @@
+<view class="setup data-v-21bdfd93"><van-button vue-id="160235d3-1" type="primary" data-com-type="wx" class="data-v-21bdfd93" bind:__l="__l" vue-slots="{{['default']}}">主要按钮</van-button></view>

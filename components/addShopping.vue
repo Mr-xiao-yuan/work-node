@@ -1,9 +1,9 @@
 <template>
 	<view class="add">
 		<ul class="add_left">
-			<li><i class="iconfont icon-dianpu"></i><p>店铺</p></li>
-			<li><i class="iconfont icon-service"></i><p>客服</p></li>
-			<li @click="xie"><i :class="index===0?collection:collection1"></i><p :style="index===0?'':'color: #FF5000'">{{index===0?'收藏':'已收藏'}}</p></li> 
+			<li><u-icon name="dianpu" custom-prefix="custom-icon"></u-icon><p>店铺</p></li>
+			<li><u-icon name="service" custom-prefix="custom-icon"></u-icon><p>客服</p></li>
+			<li @click="xie"><u-icon :name="index===0?collection:collection1" custom-prefix="custom-icon"></u-icon><p :style="index===0?'':'color: #FF5000'">{{index===0?'收藏':'已收藏'}}</p></li> 
 		</ul>
 		<ul class="add_right">
 			<li class="cart" @click="addCart">加入购物车</li>
@@ -16,8 +16,8 @@
 	export default {
 		data() {
 			return {
-				collection: "iconfont icon-shoucang1",
-			    collection1: "iconfont icon-shoucang",
+				collection: "shoucang1",
+			    collection1: "shoucang",
 				index: 0
 			}
 		},
